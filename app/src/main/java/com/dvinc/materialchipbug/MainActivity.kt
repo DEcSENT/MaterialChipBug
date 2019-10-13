@@ -14,13 +14,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         updateButton.setOnClickListener {
-            chipGroup.removeAllViews()
             updateAllChips()
         }
     }
 
     private fun updateAllChips() {
-        getTitles().forEach { title ->
+        chipGroup.removeAllViews()
+        val chipsTitles = listOf("Tag 1", "Tag 2", "Tag 3", "Tag 4")
+        chipsTitles.forEach { title ->
             val chip = createChip(this, title)
             chipGroup.addView(chip)
         }
@@ -36,9 +37,5 @@ class MainActivity : AppCompatActivity() {
                 setChipBackgroundColorResource(R.color.chipColor)
                 setTextColor(ContextCompat.getColor(context, R.color.black))
             }
-    }
-
-    private fun getTitles(): List<String> {
-        return listOf("Tag 1", "Tag 2", "Tag 3", "Tag 4")
     }
 }
